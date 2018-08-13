@@ -28,4 +28,104 @@ public class SimpleMatrix
 		colonne = initdata[0].length /* STESSA COSA PER LE COLONNE */
 		data = new double[righe][colonne]; /* INIZIALIZZA DATA ALLA DIMENSIONE DELL'ARRAY BIDIMENSIONALE INITDATA CHE VERRA' PASSATO AL METODO SIMPLEMATRIX */
 
+	
+		for (i=0; i < righe; i++)
+			for (j=0; j < colonne; j++)
+				data[i][j]=initdata[i][j];
 
+	}
+
+	
+
+
+	/** METODI PUBBLICI  */
+
+	/** SOMMA DI DUE MATRICI @PARAM X IL SECONDO OPERANDO DELLA SOMMA @RETURN UNA MATRICE IL CUI VALORE È THIS+X */
+
+	public SimpleMatrix add (SimpleMatrix x)
+	{
+		SimpleMatrix ris; // OGGETTO SIMPLEMATRIX
+		int i,j;
+
+		if ((righe != x.righe) || (colonne != x.colonne))
+			throw new AritmeticException ("Incompatible Matrix");
+		ris = new SimpleMatrix (righe,colonne);
+		for(i=0 ;i<righe;i++)
+			for(j=0;j<colonne; j++)
+				ris.data[i][j] = data[i][j]+x.data[i][j];
+		return ris;
+	}
+
+	/** MOLTIPLICA DUE MATRICI  @PARAM X IL SECONDO OPERANDO DELLA MOLTIPLICAZIONE @RETURN UNA MATRICE IL CUI VALORE E' THIS*X */
+
+	public SimpleMatrix multiply(SimpleMatrix x)
+	{
+		SimpleMatrix ris;
+		double temp;
+		int i,j,k;
+
+		if((righe != x.righe) || (colonne != x.colonne))
+			throw new ArithmeticException ("Incompatible Matrix");
+
+		ris = new SimpleMatrix(righe,colonne);
+		for(i=0; i<righe; i++)	
+			for(j=0;j<colonne;j++){
+				temp=0.0;
+				for(k=0; k<righe; k++) temp = temp + data[i][k]*x.data[k][j];
+				ris.data[i][j] = temp;
+				}
+		return ris;
+	}
+		
+	/** MOLTIPLICA UNA MATRICE PER UNO SCALARE DI TIPO DOUBLE @PARAM X IL VALORE SCALARE @RETURN UNA MATRICE IL CUI VALORE È X*THIS */
+
+	public SimpleMatrix scalar (double x)
+	{
+		SimpleMatrix x;
+		int i, j;
+
+		ris = new SimpleMatrix(righe, colonne);
+		
+		for(i=0; i< righe; i++)
+			for(j=0; j <colonne; j++)
+				data[i][j]  *= x;
+		return ris;
+	}
+		
+	/** CONVERTE UN NUMERO COMPLESSO IN UNA STRINGA @RETURN UNA STRINGA CHE RAPPRESENTA  IL NUMERO COMPLESSO */
+
+	public String toString()
+	{
+		String matrep = "[";
+		int i,j;
+		
+		for(i=0; i<righe ; i++)
+		{
+			matrep += "[";
+			for(j=0; j<colonne; j++)
+			{
+				matrep = matrep + String.valueOf (data[i][j]);
+				if (j != colonne - 1)
+					matrep += ",";
+
+			}
+
+			matrep += "]";
+		}
+			return matrep;
+	} 
+
+	/** METODO PRINCIPALE */
+
+	public static void main (String[] args)
+	{
+
+		SimpleMatrix mat1, mat2, mat3;
+		double[][] a={{1.2,-0,75,1.8}
+			      {-0.99,3.45,-4.89}
+			      {-9.8,0.08,1.98}};
+		double[][] a1={{}
+			       {}
+	}		       {}};
+
+	
