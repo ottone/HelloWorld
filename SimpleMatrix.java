@@ -124,8 +124,19 @@ public class SimpleMatrix
 		double[][] a={{1.2,-0,75,1.8}
 			      {-0.99,3.45,-4.89}
 			      {-9.8,0.08,1.98}};
-		double[][] a1={{}
-			       {}
-	}		       {}};
+		double[][] a1={{1.0,0.0,0.0}
+			       {0.0,1.0,0.0}
+			       {0.0,0.0,1.0}};
+		
+		mat1 = new SimpleMatrix(a1);
+		System.out.println (mat1.toString());
+		mat2 = new SimpleMatrix(a);
+		System.out.println (mat2.toString());
+		mat3 = mat2.add (mat1);
+		System.out.println (mat3.toString());
+		mat3 = mat2.multiply (mat1);
+		System.out.println (mat3.toString());
+		
+	}
 
-	
+} /* END OF CLASS SIMPLE MATRIX */ 
